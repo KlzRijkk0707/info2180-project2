@@ -99,17 +99,30 @@ function switchPieces(p1, p2) { //created to switch pieces when clicked and is n
     }
 }
 
+
+//function to add both the mouseover and onclick event listeners to the pieces
+
 function addListener(pieces2) {
 
-    pieces2[0].onclick = function () {
+    pieces2[0].onclick = function () {  //1
         if (pieces2[1].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[0], pieces2[1]);
         } else if (pieces2[4].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[0], pieces2[4]);
         }
     };
+    pieces2[0].onmouseover = function () {
+        if (pieces2[1].outerHTML.includes('id="empty"')) {
+            pieces2[0].classList.add("movablepiece");
+        } else if (pieces2[4].outerHTML.includes('id="empty"')) {
+            pieces2[0].classList.add("movablepiece");
+        }
+    };
+    pieces2[0].onmouseout = function () {
+        pieces2[0].classList.remove("movablepiece");
+    };
 
-    pieces2[1].onclick = function () {
+    pieces2[1].onclick = function () {  //2
         if (pieces2[2].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[1], pieces2[2]);
         } else if (pieces2[0].outerHTML.includes('id="empty"')) {
@@ -118,8 +131,20 @@ function addListener(pieces2) {
             switchPieces(pieces2[1], pieces2[5]);
         }
     };
+    pieces2[1].onmouseover = function () {
+        if (pieces2[2].outerHTML.includes('id="empty"')) {
+            pieces2[1].classList.add("movablepiece");
+        } else if (pieces2[0].outerHTML.includes('id="empty"')) {
+            pieces2[1].classList.add("movablepiece");
+        } else if (pieces2[5].outerHTML.includes('id="empty"')) {
+            pieces2[1].classList.add("movablepiece");
+        }
+    };
+    pieces2[1].onmouseout = function () {
+        pieces2[1].classList.remove("movablepiece");
+    };
 
-    pieces2[2].onclick = function () {
+    pieces2[2].onclick = function () { //3
 
         if (pieces2[3].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[2], pieces2[3]);
@@ -129,14 +154,36 @@ function addListener(pieces2) {
             switchPieces(pieces2[2], pieces2[6]);
         }
     };
+    pieces2[2].onmouseover = function () {
+        if (pieces2[1].outerHTML.includes('id="empty"')) {
+            pieces2[2].classList.add("movablepiece");
+        } else if (pieces2[6].outerHTML.includes('id="empty"')) {
+            pieces2[2].classList.add("movablepiece");
+        } else if (pieces2[3].outerHTML.includes('id="empty"')) {
+            pieces2[2].classList.add("movablepiece");
+        }
+    };
+    pieces2[2].onmouseout = function () {
+        pieces2[2].classList.remove("movablepiece");
+    };
 
-    pieces2[3].onclick = function () {
+    pieces2[3].onclick = function () { //4
 
         if (pieces2[2].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[3], pieces2[2]);
         } else if (pieces2[7].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[3], pieces2[7]);
         }
+    };
+    pieces2[3].onmouseover = function () {
+        if (pieces2[2].outerHTML.includes('id="empty"')) {
+            pieces2[3].classList.add("movablepiece");
+        } else if (pieces2[7].outerHTML.includes('id="empty"')) {
+            pieces2[3].classList.add("movablepiece");
+        }
+    };
+    pieces2[3].onmouseout = function () {
+        pieces2[3].classList.remove("movablepiece");
     };
 
     pieces2[4].onclick = function () { //5
@@ -148,6 +195,18 @@ function addListener(pieces2) {
         } else if (pieces2[8].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[4], pieces2[8]);
         }
+    };
+    pieces2[4].onmouseover = function () {
+        if (pieces2[0].outerHTML.includes('id="empty"')) {
+            pieces2[4].classList.add("movablepiece");
+        } else if (pieces2[5].outerHTML.includes('id="empty"')) {
+            pieces2[4].classList.add("movablepiece");
+        } else if (pieces2[8].outerHTML.includes('id="empty"')) {
+            pieces2[4].classList.add("movablepiece");
+        }
+    };
+    pieces2[4].onmouseout = function () {
+        pieces2[4].classList.remove("movablepiece");
     };
 
     pieces2[5].onclick = function () {  //6
@@ -162,6 +221,21 @@ function addListener(pieces2) {
             switchPieces(pieces2[5], pieces2[4]);
         }
     };
+    pieces2[5].onmouseover = function () {
+        if (pieces2[1].outerHTML.includes('id="empty"')) {
+            pieces2[5].classList.add("movablepiece");
+        } else if (pieces2[6].outerHTML.includes('id="empty"')) {
+            pieces2[5].classList.add("movablepiece");
+        } else if (pieces2[4].outerHTML.includes('id="empty"')) {
+            pieces2[5].classList.add("movablepiece");
+        } else if (pieces2[9].outerHTML.includes('id="empty"')) {
+            pieces2[5].classList.add("movablepiece");
+        }
+    };
+    pieces2[5].onmouseout = function () {
+        pieces2[5].classList.remove("movablepiece");
+    };
+
 
     pieces2[6].onclick = function () {  //7
 
@@ -175,6 +249,21 @@ function addListener(pieces2) {
             switchPieces(pieces2[6], pieces2[10]);
         }
     };
+    pieces2[6].onmouseover = function () {
+        if (pieces2[2].outerHTML.includes('id="empty"')) {
+            pieces2[6].classList.add("movablepiece");
+        } else if (pieces2[5].outerHTML.includes('id="empty"')) {
+            pieces2[6].classList.add("movablepiece");
+        } else if (pieces2[7].outerHTML.includes('id="empty"')) {
+            pieces2[6].classList.add("movablepiece");
+        } else if (pieces2[10].outerHTML.includes('id="empty"')) {
+            pieces2[6].classList.add("movablepiece");
+        }
+    };
+    pieces2[6].onmouseout = function () {
+        pieces2[6].classList.remove("movablepiece");
+    };
+
 
     pieces2[7].onclick = function () {  //8
 
@@ -185,6 +274,18 @@ function addListener(pieces2) {
         } else if (pieces2[11].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[7], pieces2[11]);
         }
+    };
+    pieces2[7].onmouseover = function () {
+        if (pieces2[11].outerHTML.includes('id="empty"')) {
+            pieces2[7].classList.add("movablepiece");
+        } else if (pieces2[6].outerHTML.includes('id="empty"')) {
+            pieces2[7].classList.add("movablepiece");
+        } else if (pieces2[3].outerHTML.includes('id="empty"')) {
+            pieces2[7].classList.add("movablepiece");
+        }
+    };
+    pieces2[7].onmouseout = function () {
+        pieces2[7].classList.remove("movablepiece");
     };
 
     pieces2[8].onclick = function () {  //9
@@ -197,6 +298,19 @@ function addListener(pieces2) {
             switchPieces(pieces2[8], pieces2[12]);
         }
     };
+    pieces2[8].onmouseover = function () {
+        if (pieces2[9].outerHTML.includes('id="empty"')) {
+            pieces2[8].classList.add("movablepiece");
+        } else if (pieces2[4].outerHTML.includes('id="empty"')) {
+            pieces2[8].classList.add("movablepiece");
+        } else if (pieces2[12].outerHTML.includes('id="empty"')) {
+            pieces2[8].classList.add("movablepiece");
+        } 
+    };
+    pieces2[8].onmouseout = function () {
+        pieces2[8].classList.remove("movablepiece");
+    };
+
 
     pieces2[9].onclick = function () {  //10
 
@@ -209,6 +323,20 @@ function addListener(pieces2) {
         } else if (pieces2[5].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[9], pieces2[5]);
         }
+    };
+    pieces2[9].onmouseover = function () {
+        if (pieces2[10].outerHTML.includes('id="empty"')) {
+            pieces2[9].classList.add("movablepiece");
+        } else if (pieces2[8].outerHTML.includes('id="empty"')) {
+            pieces2[9].classList.add("movablepiece");
+        } else if (pieces2[13].outerHTML.includes('id="empty"')) {
+            pieces2[9].classList.add("movablepiece");
+        } else if (pieces2[5].outerHTML.includes('id="empty"')) {
+            pieces2[9].classList.add("movablepiece");
+        }
+    };
+    pieces2[9].onmouseout = function () {
+        pieces2[9].classList.remove("movablepiece");
     };
 
     pieces2[10].onclick = function () {  //11
@@ -224,6 +352,21 @@ function addListener(pieces2) {
         }
     };
 
+    pieces2[10].onmouseover = function () {
+        if (pieces2[11].outerHTML.includes('id="empty"')) {
+            pieces2[10].classList.add("movablepiece");
+        } else if (pieces2[6].outerHTML.includes('id="empty"')) {
+            pieces2[10].classList.add("movablepiece");
+        } else if (pieces2[14].outerHTML.includes('id="empty"')) {
+            pieces2[10].classList.add("movablepiece");
+        } else if (pieces2[9].outerHTML.includes('id="empty"')) {
+                pieces2[10].classList.add("movablepiece");
+        }
+    };
+    pieces2[10].onmouseout = function () {
+        pieces2[10].classList.remove("movablepiece");
+    };
+
     pieces2[11].onclick = function () {  //12
 
         if (pieces2[10].outerHTML.includes('id="empty"')) {
@@ -234,6 +377,18 @@ function addListener(pieces2) {
             switchPieces(pieces2[11], pieces2[7]);
         }
     };
+    pieces2[11].onmouseover = function () {
+        if (pieces2[10].outerHTML.includes('id="empty"')) {
+            pieces2[11].classList.add("movablepiece");
+        } else if (pieces2[15].outerHTML.includes('id="empty"')) {
+            pieces2[11].classList.add("movablepiece");
+        } else if (pieces2[7].outerHTML.includes('id="empty"')) {
+            pieces2[11].classList.add("movablepiece");
+        }
+    };
+    pieces2[11].onmouseout = function () {
+        pieces2[11].classList.remove("movablepiece");
+    };
 
     pieces2[12].onclick = function () {  //13
 
@@ -242,6 +397,16 @@ function addListener(pieces2) {
         } else if (pieces2[13].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[12], pieces2[13]);
         }
+    };
+    pieces2[12].onmouseover = function () {
+        if (pieces2[13].outerHTML.includes('id="empty"')) {
+            pieces2[12].classList.add("movablepiece");
+        } else if (pieces2[8].outerHTML.includes('id="empty"')) {
+            pieces2[12].classList.add("movablepiece");
+        }
+    };
+    pieces2[12].onmouseout = function () {
+        pieces2[12].classList.remove("movablepiece");
     };
 
     pieces2[13].onclick = function () { //14
@@ -252,6 +417,18 @@ function addListener(pieces2) {
         } else if (pieces2[9].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[13], pieces2[9]);
         }
+    };
+    pieces2[13].onmouseover = function () {
+        if (pieces2[14].outerHTML.includes('id="empty"')) {
+            pieces2[13].classList.add("movablepiece");
+        } else if (pieces2[12].outerHTML.includes('id="empty"')) {
+            pieces2[13].classList.add("movablepiece");
+        } else if (pieces2[9].outerHTML.includes('id="empty"')) {
+            pieces2[13].classList.add("movablepiece");
+        }
+    };
+    pieces2[13].onmouseout = function () {
+       pieces2[13].classList.remove("movablepiece");   
     };
 
     pieces2[14].onclick = function () { //15
@@ -264,17 +441,44 @@ function addListener(pieces2) {
         }
     };
 
-    pieces2[15].onclick = function () {         //when a tile moves into the bottom right corner
+    pieces2[14].onmouseover = function () {
+        if (pieces2[15].outerHTML.includes('id="empty"')) {
+            pieces2[14].classList.add("movablepiece");
+        } else if (pieces2[13].outerHTML.includes('id="empty"')) {
+            pieces2[14].classList.add("movablepiece");
+        } else if (pieces2[10].outerHTML.includes('id="empty"')) {
+            pieces2[14].classList.add("movablepiece");
+        }
+    };
+    pieces2[14].onmouseout = function () {
+        pieces2[14].classList.remove("movablepiece");
+    };
+
+
+    pieces2[15].onclick = function () {         //last space
         if (pieces2[14].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[15], pieces2[14]);
         } else if (pieces2[11].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[15], pieces2[11]);
         }
     };
+    pieces2[15].onmouseover = function () {
+        if (pieces2[14].outerHTML.includes('id="empty"')) {
+            pieces2[15].classList.add("movablepiece");
+        } else if (pieces2[11].outerHTML.includes('id="empty"')) {
+            pieces2[15].classList.add("movablepiece");
+        }
+    };
+    pieces2[15].onmouseout = function () {
+        pieces2[15].classList.remove("movablepiece");
+    };
 
 }
 
-function emptyEvn(p) {                  //FUNCTION TO HELP DETERMINE IF THE SHUFFLED PUZZLE IS SOLVABLE by checking the row in which the empty piece is in
+
+
+//FUNCTION TO HELP DETERMINE IF THE SHUFFLED PUZZLE IS SOLVABLE by checking the row in which the empty piece is in
+function emptyEvn(p) {                  
     var t = p.length;
     for (i = 0; i < t; i++) {
         if (p[i].outerHTML.includes('id="empty"') && i < 4) {
@@ -288,7 +492,9 @@ function emptyEvn(p) {                  //FUNCTION TO HELP DETERMINE IF THE SHUF
 
 }
 
-function shuffle(p) {  //SHUFFLES THE PIECES AND DETERMINES IF THE SHUFFLED PIECES ARE SOLVABLE
+
+ //SHUFFLES THE PIECES AND DETERMINES IF THE SHUFFLED PIECES ARE SOLVABLE
+function shuffle(p) { 
     var term = p.length;
     var term2 = term -1;
     var inversions = 0;
@@ -311,7 +517,8 @@ function shuffle(p) {  //SHUFFLES THE PIECES AND DETERMINES IF THE SHUFFLED PIEC
         }
         console.log(inversions);
     }
-    
+    //checking if solvable after shuffle
+
      if (inversions % 2 == 0 && !emptyEvn(p)) {
          console.log("solvable");
          console.log("check1: " + !emptyEvn(p));
@@ -328,121 +535,13 @@ function shuffle(p) {  //SHUFFLES THE PIECES AND DETERMINES IF THE SHUFFLED PIEC
     }
        
 }
-/*
-function checkEmpty(p , n) { //check if an empty space is next to a tile if MOUSEOVER
-    // odd cases = 1, (2,3,) 4 | ,5,8 | ,9,12, | 13,(14,15)
-    switch (parseInt(p.innerHTML)) {
-        case 1:
-            if (p[(n + 1)].outerHTML.includes('id="empty"')) {
-                console.log("swichable to the right");
-                var x = "right";
-                return x;
-            } else if (p[(n + 4)].outerHTML.includes('id="empty"')) {
-                console.log("switchable below");
-                var x = "below";
-                return x;
-            }
-            break;
-        case 2:
-        case 3:
-            if (p[(n + 1)].outerHTML.includes('id="empty"')) {
-                console.log("switchable to the right");
-            } else if (p[(n - 1)].outerHTML.includes('id="empty"')) {
-                console.log("switchable to the left");
-            } else if (p[(n + 4)].outerHTML.includes('id="empty"')) {
-                console.log("switchable below");
-            }
-            break;
-        case 4:
-            if (p[(n - 1)].outerHTML.includes('id="empty"')) {
-                console.log("swichable to the left");
-            } else if (p[(n + 4)].outerHTML.includes('id="empty"')) {
-                console.log("switchable below");
-            }
-            break;
-        case 5:
-            if (p[(n - 4)].outerHTML.includes('id="empty"')) {
-                console.log("swichable above");
-            } else if (p[(n + 1)].outerHTML.includes('id="empty"')) {
-                console.log("switchable to the right");
-            } else if (p[(n + 4)].outerHTML.includes('id="empty"')) {
-                console.log("switchable below");
-            }
-            break;
-        case 8:
-            if (p[(n - 1)].outerHTML.includes('id="empty"')) {
-                console.log("swichable to the left");
-            } else if (p[(n + 4)].outerHTML.includes('id="empty"')) {
-                console.log("switchable below");
-            } else if (p[(n - 4)].outerHTML.includes('id="empty"')) {
-                console.log("swichable above");
-            } 
-            break;
-        case 9:
-            if (p[(n - 4)].outerHTML.includes('id="empty"')) {
-                console.log("swichable above");
-            } else if (p[(n + 1)].outerHTML.includes('id="empty"')) {
-                console.log("switchable to the right");
-            } else if (p[(n + 4)].outerHTML.includes('id="empty"')) {
-                console.log("switchable below");
-            }
-            break;
-        case 12:
-            if (p[(n - 1)].outerHTML.includes('id="empty"')) {
-                console.log("swichable to the left");
-            } else if (p[(n + 4)].outerHTML.includes('id="empty"')) {
-                console.log("switchable below");
-            } else if (p[(n - 4)].outerHTML.includes('id="empty"')) {
-                console.log("swichable above");
-            }
-            break;
-        case 13:
-            if (p[(n - 4)].outerHTML.includes('id="empty"')) {
-                console.log("swichable above");
-            } else if (p[(n + 1)].outerHTML.includes('id="empty"')) {
-                console.log("switchable to the right");
-            } 
-            break;
-        case 14:
-            if (p[(n - 4)].outerHTML.includes('id="empty"')) {
-                console.log("swichable above");
-            } else if (p[(n + 1)].outerHTML.includes('id="empty"')) {
-                console.log("switchable to the right");
-            } else if (p[(n - 1)].outerHTML.includes('id="empty"')) {
-                console.log("swichable to the left");
-            }
-            break;
-        case 15:
-            if (p[(n - 1)].outerHTML.includes('id="empty"')) {
-                console.log("swichable to the left");
-            } else if (p[(n - 4)].outerHTML.includes('id="empty"')) {
-                console.log("switchable above");
-            }
-            break;
-        case 6:
-        case 7:
-        case 10:
-        case 11:
-            if (p[(n + 1)].outerHTML.includes('id="empty"')) {
-                console.log("swichable to the right");
-            } else if (p[(n + 4)].outerHTML.includes('id="empty"')) {
-                console.log("switchable below");
-            } else if (p[(n - 1)].outerHTML.includes('id="empty"')) {
-                console.log("swichable to the left");
-            } else if (p[(n - 4)].outerHTML.includes('id="empty"')) {
-                console.log("switchable above");
-            }
-            break;
-    }
 
-
-} 
-*/
 
 /** END FUNCTION**/
 
 
 /**WORK DONE **/
+
 window.onload = function () {
 
 
@@ -455,27 +554,21 @@ window.onload = function () {
     console.log(pieces);
 
     /**END VARIABLES**/
-
-
    
-    
     setPuzzlePieces(pieces);        //arrange pieces in order in puzzle area
     $('#puzzlearea').append('<div class="puzzlepiece" style="position: relative; float: left;" id ="empty"> </div>');    //adds empty square to puzzle
     pieces2 = puzzleArea.querySelectorAll("div");        //pieces including the blank space
     arrangeImage(pieces2);
 
-    /*testing*/
-        
     console.log(pieces2);
 
+    addListener(pieces2);
     var button = document.getElementById("shufflebutton");
     button.onclick = function () {
         shuffle(pieces2);
     };
-    addListener(pieces2);
    
    
-    /*testing*/
 
   /*END END*/ 
 };
