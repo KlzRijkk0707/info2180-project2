@@ -1,6 +1,6 @@
 // JavaScript source code
 //620043175
-
+// ADDITIONAL FEATURE INCLUDED IS AN ALERT MESSAGE TO LET YOU KNOW YOU WON
 
 /** FUNCTION SECTION**/
 
@@ -101,11 +101,9 @@ function switchPieces(p1, p2) { //created to switch pieces when clicked and is n
 }
 
 
-//function to add both the mouseover and onclick event listeners to the pieces
+//function to add the mouseover and onclick event listeners to the pieces and also checks the tiles if the game is won when clicked
 
 function addListener(pieces2) {
-
-    console.log('pieces2 taken into addListener: ' + pieces2);
 
     pieces2[0].onclick = function () {  //1
         if (pieces2[1].outerHTML.includes('id="empty"')) {
@@ -117,9 +115,8 @@ function addListener(pieces2) {
         if (checkWin(pieces2)) {
             console.log('you win');
         }
-
     };
-    pieces2[0].onmouseover = function () {
+	pieces2[0].onmouseover = function () {
         if (pieces2[1].outerHTML.includes('id="empty"')) {
             pieces2[0].classList.add("movablepiece");
         } else if (pieces2[4].outerHTML.includes('id="empty"')) {
@@ -168,7 +165,7 @@ function addListener(pieces2) {
         
         if (checkWin(pieces2)) {
             console.log('you win');
-        }
+		}
     };
     pieces2[2].onmouseover = function () {
         if (pieces2[1].outerHTML.includes('id="empty"')) {
@@ -476,6 +473,7 @@ function addListener(pieces2) {
         
         if (checkWin(pieces2)) {
             console.log('you win');
+			console.log(checkWin(pieces2));
         }
     };
     pieces2[13].onmouseover = function () {
@@ -494,16 +492,14 @@ function addListener(pieces2) {
     pieces2[14].onclick = function () { //15
         if (pieces2[15].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[14], pieces2[15]);
-            //checkWin(pieces2);
         } else if (pieces2[13].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[14], pieces2[13]);
-            //checkWin(pieces2);
         } else if (pieces2[10].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[14], pieces2[10]);
-            //checkWin(pieces2);
         }
         
         if (checkWin(pieces2)) {
+			console.log(pieces2);
             console.log('you win');
         } 
     };
@@ -529,11 +525,13 @@ function addListener(pieces2) {
         } else if (pieces2[11].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[15], pieces2[11]);
         }
+		console.log(pieces2);
+		console.log('lll: '+checkWin(pieces2));
         
-        console.log('pieces2: for checkwin: ' + checkWin(pieces2));
-
         if (checkWin(pieces2)) {
             console.log('you win');
+			console.log(pieces2);
+			console.log(checkWin(pieces2));
         } 
     };
     pieces2[15].onmouseover = function () {
@@ -589,29 +587,68 @@ function shuffle(p) {
                 
             }
         }
-        console.log(inversions);
     }
+	
     //checking if solvable after shuffle
-
      if (inversions % 2 == 0 && !emptyEvn(p)) {
          console.log("solvable");
-         console.log("check1: " + !emptyEvn(p));
-         console.log("smhh2: " + emptyEvn(p));
-         console.log("smhh3: " + inversions % 2);
-
      } else if (inversions % 2 == 1 && emptyEvn(p)) {
          console.log("solvable");
-         console.log("smhh2"+ emptyEvn(p));
      } else {
         switchPieces(p[term2 - 1], p[term2]);
         inversions = inversions + 1;
-        console.log("new after switching 1: "+inversions);
+        console.log("new after switching 1, new inversion: "+inversions);
     }
        
 }
+//EXTRA FUNCTION TO SEND A WIN MESSAGE ON THE SCREEN VIA ALERT
+function checkWin(p) {
+    var a1 = [p[0].innerHTML, p[1].innerHTML, p[2].innerHTML, p[3].innerHTML];
+    var a2 = [p[4].innerHTML, p[5].innerHTML, p[6].innerHTML, p[7].innerHTML];
+    var a3 = [p[8].innerHTML, p[9].innerHTML, p[10].innerHTML, p[11].innerHTML];
+    var a4 = [p[12].innerHTML, p[13].innerHTML, p[14].innerHTML, p[15].innerHTML];
 
+    var holder = [a1, a2, a3, a4];
+    var win = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15," "]];
+	console.log(holder[0]);
+	console.log(holder[1]);
+	console.log(holder[2]);
+	console.log(holder[3]);
+    
+	var w = false;
+    
+	for (i = 0; i < 4; i++) {
+        
+		console.log('i: '+i);
+		
+		var t = 4;
+        if (i == 3) {
+            t = 3;
+        }
+		console.log('t: '+t);
+        for (j = 0; j < t; j++) {
+            if (parseInt(holder[i][j]) == win[i][j]) {
+				console.log(holder[i][j]);
+                if (i == 4 && j == 4) {
+					console.log(parseInt(holder[i][j]) == win[i][j]);
+					console.log(parseInt(win[i][j]));
+					console.log(parseInt(holder[i][j]));
+                    w = true;
+					
+				}
+				
+            } else {
+                w = false;
+				
+            }
+           
+        }
+		return w;
+    }
+}
 
 /** END FUNCTION**/
+
 
 
 /**WORK DONE **/
@@ -622,86 +659,21 @@ window.onload = function () {
     /**VARIABLES**/
 
     var puzzleArea = document.getElementById("puzzlearea");
-    console.log(puzzleArea);
-
     var pieces = puzzleArea.querySelectorAll("div");      //initial pieces of the puzzle
-    console.log(pieces);
-
+	var button = document.getElementById("shufflebutton");
+    
     /**END VARIABLES**/
-
-
     
     setPuzzlePieces(pieces);        //arrange pieces in order in puzzle area
     $('#puzzlearea').append('<div class="puzzlepiece" style="position: relative; float: left;" id ="empty"> </div>');    //adds empty square to puzzle
-
     pieces2 = puzzleArea.querySelectorAll("div");        //pieces including the blank space
-
-
-    console.log('first pieces2: ' + pieces2[1].outerHTML);
-
     arrangeImage(pieces2);
-
-    /*TESTING SECTION*/
-
-    console.log('after arrangement pieces: '+ pieces2);
-
-    /*END TESTING*/
-
     addListener(pieces2);
     
-    var button = document.getElementById("shufflebutton");
     button.onclick = function () {
         shuffle(pieces2);
-        
     };
-   
-   
-
-  /*END END*/ 
+   /*END END*/ 
 };
 
 
-function checkWin(p) {
-    var a1 = [p[0].innerHTML, p[1].innerHTML, p[2].innerHTML, p[3].innerHTML];
-    var a2 = [p[4].innerHTML, p[5].innerHTML, p[6].innerHTML, p[7].innerHTML];
-    var a3 = [p[8].innerHTML, p[9].innerHTML, p[10].innerHTML, p[11].innerHTML];
-    var a4 = [p[12].innerHTML, p[13].innerHTML, p[14].innerHTML, p[15].innerHTML];
-
-    var holder = [a1, a2, a3, a4];
-
-    var win = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15,'']];
-
-    console.log('holder' + p[1]);
-    console.log('pieces taken in: ' + p);
-    console.log('holder: ' + holder);
-    console.log('holder[1]: '+holder[1][1]);
-    
-    var w = false;
-    for (i = 0; i < 4; i++) {
-        var t = 4;
-        if (i == 3) {
-            t = 3;
-        }
-        console.log('t: ' + t);
-
-        for (j = 0; j < t; j++) {
-            if (parseInt(holder[i][j]) == win[i][j]) {
-                if (i == 4 && j == 3) {
-                    w = true;
-                    console.log('you win');
-                    return w;
-                }
-                console.log(parseInt(holder[i][j]) == win[i][j]);
-                console.log(w);
-            } else {
-
-                w = false;
-                console.log('try some more');
-                return w;
-            }
-            console.log('you win');
-            return w;
-        }
-    }
-
-}
