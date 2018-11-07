@@ -10,7 +10,7 @@ function setPuzzlePieces(w) {  //ADDS THE PUZZLEPIECE CLASS TO THE PIECES
         w[i].classList.add("puzzlepiece");
         w[i].style.position = "relative";
         w[i].style.float = "left";
-        
+                
     }
     
 }
@@ -63,6 +63,7 @@ function switchPieces(p1, p2) { //created to switch pieces when clicked and is n
         p2.innerHTML = x[4];
         p2.removeAttribute("id"); //removing the 'empty' id  from div
 
+
     } else if (p1.outerHTML.includes('id="empty"')) {
         var x = [p2.className, p2.style.backgroundPosition, p2.style.position, p2.style.float, p2.innerHTML];
 
@@ -104,12 +105,19 @@ function switchPieces(p1, p2) { //created to switch pieces when clicked and is n
 
 function addListener(pieces2) {
 
+    console.log('pieces2 taken into addListener: ' + pieces2);
+
     pieces2[0].onclick = function () {  //1
         if (pieces2[1].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[0], pieces2[1]);
         } else if (pieces2[4].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[0], pieces2[4]);
         }
+        
+        if (checkWin(pieces2)) {
+            console.log('you win');
+        }
+
     };
     pieces2[0].onmouseover = function () {
         if (pieces2[1].outerHTML.includes('id="empty"')) {
@@ -129,6 +137,10 @@ function addListener(pieces2) {
             switchPieces(pieces2[1], pieces2[0]);
         } else if (pieces2[5].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[1], pieces2[5]);
+        }
+        
+        if (checkWin(pieces2)) {
+            console.log('you win');
         }
     };
     pieces2[1].onmouseover = function () {
@@ -153,6 +165,10 @@ function addListener(pieces2) {
         } else if (pieces2[6].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[2], pieces2[6]);
         }
+        
+        if (checkWin(pieces2)) {
+            console.log('you win');
+        }
     };
     pieces2[2].onmouseover = function () {
         if (pieces2[1].outerHTML.includes('id="empty"')) {
@@ -174,6 +190,10 @@ function addListener(pieces2) {
         } else if (pieces2[7].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[3], pieces2[7]);
         }
+        
+        if (checkWin(pieces2)) {
+            console.log('you win');
+        }
     };
     pieces2[3].onmouseover = function () {
         if (pieces2[2].outerHTML.includes('id="empty"')) {
@@ -194,6 +214,10 @@ function addListener(pieces2) {
             switchPieces(pieces2[4], pieces2[5]);
         } else if (pieces2[8].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[4], pieces2[8]);
+        }
+        
+        if (checkWin(pieces2)) {
+            console.log('you win');
         }
     };
     pieces2[4].onmouseover = function () {
@@ -219,6 +243,10 @@ function addListener(pieces2) {
             switchPieces(pieces2[5], pieces2[9]);
         } else if (pieces2[4].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[5], pieces2[4]);
+        }
+        
+        if (checkWin(pieces2)) {
+            console.log('you win');
         }
     };
     pieces2[5].onmouseover = function () {
@@ -248,6 +276,10 @@ function addListener(pieces2) {
         } else if (pieces2[10].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[6], pieces2[10]);
         }
+        
+        if (checkWin(pieces2)) {
+            console.log('you win');
+        }
     };
     pieces2[6].onmouseover = function () {
         if (pieces2[2].outerHTML.includes('id="empty"')) {
@@ -274,6 +306,10 @@ function addListener(pieces2) {
         } else if (pieces2[11].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[7], pieces2[11]);
         }
+        
+        if (checkWin(pieces2)) {
+            console.log('you win');
+        }
     };
     pieces2[7].onmouseover = function () {
         if (pieces2[11].outerHTML.includes('id="empty"')) {
@@ -296,6 +332,10 @@ function addListener(pieces2) {
             switchPieces(pieces2[8], pieces2[4]);
         } else if (pieces2[12].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[8], pieces2[12]);
+        }
+        
+        if (checkWin(pieces2)) {
+            console.log('you win');
         }
     };
     pieces2[8].onmouseover = function () {
@@ -322,6 +362,10 @@ function addListener(pieces2) {
             switchPieces(pieces2[9], pieces2[13]);
         } else if (pieces2[5].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[9], pieces2[5]);
+        }
+        
+        if (checkWin(pieces2)) {
+            console.log('you win');
         }
     };
     pieces2[9].onmouseover = function () {
@@ -350,6 +394,10 @@ function addListener(pieces2) {
         } else if (pieces2[9].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[10], pieces2[9]);
         }
+        
+        if (checkWin(pieces2)) {
+            console.log('you win');
+        }
     };
 
     pieces2[10].onmouseover = function () {
@@ -376,6 +424,10 @@ function addListener(pieces2) {
         } else if (pieces2[7].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[11], pieces2[7]);
         }
+        
+        if (checkWin(pieces2)) {
+            console.log('you win');
+        }
     };
     pieces2[11].onmouseover = function () {
         if (pieces2[10].outerHTML.includes('id="empty"')) {
@@ -397,6 +449,10 @@ function addListener(pieces2) {
         } else if (pieces2[13].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[12], pieces2[13]);
         }
+        
+        if (checkWin(pieces2)) {
+            console.log('you win');
+        }
     };
     pieces2[12].onmouseover = function () {
         if (pieces2[13].outerHTML.includes('id="empty"')) {
@@ -417,6 +473,10 @@ function addListener(pieces2) {
         } else if (pieces2[9].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[13], pieces2[9]);
         }
+        
+        if (checkWin(pieces2)) {
+            console.log('you win');
+        }
     };
     pieces2[13].onmouseover = function () {
         if (pieces2[14].outerHTML.includes('id="empty"')) {
@@ -434,11 +494,18 @@ function addListener(pieces2) {
     pieces2[14].onclick = function () { //15
         if (pieces2[15].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[14], pieces2[15]);
+            //checkWin(pieces2);
         } else if (pieces2[13].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[14], pieces2[13]);
+            //checkWin(pieces2);
         } else if (pieces2[10].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[14], pieces2[10]);
+            //checkWin(pieces2);
         }
+        
+        if (checkWin(pieces2)) {
+            console.log('you win');
+        } 
     };
 
     pieces2[14].onmouseover = function () {
@@ -449,6 +516,7 @@ function addListener(pieces2) {
         } else if (pieces2[10].outerHTML.includes('id="empty"')) {
             pieces2[14].classList.add("movablepiece");
         }
+        
     };
     pieces2[14].onmouseout = function () {
         pieces2[14].classList.remove("movablepiece");
@@ -461,6 +529,12 @@ function addListener(pieces2) {
         } else if (pieces2[11].outerHTML.includes('id="empty"')) {
             switchPieces(pieces2[15], pieces2[11]);
         }
+        
+        console.log('pieces2: for checkwin: ' + checkWin(pieces2));
+
+        if (checkWin(pieces2)) {
+            console.log('you win');
+        } 
     };
     pieces2[15].onmouseover = function () {
         if (pieces2[14].outerHTML.includes('id="empty"')) {
@@ -554,21 +628,80 @@ window.onload = function () {
     console.log(pieces);
 
     /**END VARIABLES**/
-   
+
+
+    
     setPuzzlePieces(pieces);        //arrange pieces in order in puzzle area
     $('#puzzlearea').append('<div class="puzzlepiece" style="position: relative; float: left;" id ="empty"> </div>');    //adds empty square to puzzle
+
     pieces2 = puzzleArea.querySelectorAll("div");        //pieces including the blank space
+
+
+    console.log('first pieces2: ' + pieces2[1].outerHTML);
+
     arrangeImage(pieces2);
 
-    console.log(pieces2);
+    /*TESTING SECTION*/
+
+    console.log('after arrangement pieces: '+ pieces2);
+
+    /*END TESTING*/
 
     addListener(pieces2);
+    
     var button = document.getElementById("shufflebutton");
     button.onclick = function () {
         shuffle(pieces2);
+        
     };
    
    
 
   /*END END*/ 
 };
+
+
+function checkWin(p) {
+    var a1 = [p[0].innerHTML, p[1].innerHTML, p[2].innerHTML, p[3].innerHTML];
+    var a2 = [p[4].innerHTML, p[5].innerHTML, p[6].innerHTML, p[7].innerHTML];
+    var a3 = [p[8].innerHTML, p[9].innerHTML, p[10].innerHTML, p[11].innerHTML];
+    var a4 = [p[12].innerHTML, p[13].innerHTML, p[14].innerHTML, p[15].innerHTML];
+
+    var holder = [a1, a2, a3, a4];
+
+    var win = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15,'']];
+
+    console.log('holder' + p[1]);
+    console.log('pieces taken in: ' + p);
+    console.log('holder: ' + holder);
+    console.log('holder[1]: '+holder[1][1]);
+    
+    var w = false;
+    for (i = 0; i < 4; i++) {
+        var t = 4;
+        if (i == 3) {
+            t = 3;
+        }
+        console.log('t: ' + t);
+
+        for (j = 0; j < t; j++) {
+            if (parseInt(holder[i][j]) == win[i][j]) {
+                if (i == 4 && j == 3) {
+                    w = true;
+                    console.log('you win');
+                    return w;
+                }
+                console.log(parseInt(holder[i][j]) == win[i][j]);
+                console.log(w);
+            } else {
+
+                w = false;
+                console.log('try some more');
+                return w;
+            }
+            console.log('you win');
+            return w;
+        }
+    }
+
+}
