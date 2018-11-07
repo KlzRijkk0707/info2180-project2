@@ -610,41 +610,34 @@ function checkWin(p) {
 
     var holder = [a1, a2, a3, a4];
     var win = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15," "]];
-	console.log(holder[0]);
-	console.log(holder[1]);
-	console.log(holder[2]);
-	console.log(holder[3]);
-    
+	
 	var w = false;
     
 	for (i = 0; i < 4; i++) {
         
-		console.log('i: '+i);
-		
+		var w = false;
 		var t = 4;
-        if (i == 3) {
+        
+		if (i == 3) {
             t = 3;
         }
-		console.log('t: '+t);
+		
         for (j = 0; j < t; j++) {
             if (parseInt(holder[i][j]) == win[i][j]) {
 				console.log(holder[i][j]);
-                if (i == 4 && j == 4) {
-					console.log(parseInt(holder[i][j]) == win[i][j]);
-					console.log(parseInt(win[i][j]));
-					console.log(parseInt(holder[i][j]));
-                    w = true;
-					
+				console.log('i in j: '+i);
+				console.log('j: '+j);
+				if (i == 3 && j == 2) {
+					w = true;
+					return w;
 				}
 				
             } else {
-                w = false;
-				
-            }
-           
-        }
-		return w;
+                w = false;				
+            }           
+        }		
     }
+	return w;
 }
 
 /** END FUNCTION**/
